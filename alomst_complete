@@ -2,6 +2,7 @@ let angle = 0;
 let w = 48;
 let ma;
 let maxD; 
+let speed = 2; 
 
 function setup() {
   createCanvas(400,400, WEBGL);
@@ -11,7 +12,7 @@ function setup() {
 
 function draw() {
   background(255, 204, 0);
-  ortho(-300, 300, 300, -300, 0, 10000); 
+  ortho(-300, 300, 300, -300, 0, 1000000); 
   rotateX(-QUARTER_PI);
   rotateY(ma);
 
@@ -26,13 +27,24 @@ function draw() {
     let d = dist(x,z,width/2,height/2);
     let offset = map(d, 0, maxD, -2,2); 
     let a = angle + offset;
-    let h = floor(map(sin(a), -1,1,100,300));
+    let h = floor(map(sin(a), -1,1,100,160));
     translate(x - width/2, z - height / 2);
-    box(w - 2, h, w - 2);
+    box(w , h, w); 
     // rect(x - width / 2 + w / 2, 0, w - 2, h );
     pop();
     }
   }
   angle += 0.1;
 
+  if(mouseIsPressed) {
+    fill(50, 55, 100); 
+  } else {
+    fill('magenta');
+  }
+
+    
+  }
+  
+
+  
 }
